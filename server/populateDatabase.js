@@ -19,6 +19,7 @@ fs.readFile(__dirname + '/hs.json', function(err, data) {
       }
       Object.keys(parsedJson).forEach(function(set) {
         parsedJson[set].forEach(function(card) {
+          card.name = card.name.toLowerCase();
           HsCard.create(card);
         });
       });
