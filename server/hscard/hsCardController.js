@@ -8,7 +8,7 @@ exports.getCards = function(req, res) {
   var query = {};
   params.forEach(function(pair) {
     var [key, value] = pair.split('=');
-    query[key] = value.toLowerCase();
+    query[key] = decodeURIComponent(value).toLowerCase();
   });
   findCards(query)
   .then(function(cards) {
