@@ -1,0 +1,7 @@
+{
+  "name": "hsgatherer",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.6.4"
+  }
+}
