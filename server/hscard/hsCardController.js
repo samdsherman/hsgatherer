@@ -44,6 +44,10 @@ exports.getCards = function(req, res) {
       query.durability = {$gt: +(query.durability.slice(1))};
     }
   }
+  if (query.playerClass) {
+    var classes = query.playerClass.split(',');
+    query.playerClass = {$in: classes};
+  }
   delete query.partial;
   findCards(query)
   .then(function(cards) {

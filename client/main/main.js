@@ -44,6 +44,14 @@ angular.module('hsgatherer.main', [])
     if ($scope.set) {
       params += '&cardSet=' + $scope.set;
     }
+
+    if ($scope.classes) {
+      var selectedClasses = Object.keys($scope.classes).filter(key => $scope.classes[key]);
+      if (selectedClasses.length > 0) {
+        params += '&playerClass=' + selectedClasses.join(',');
+      }
+    }
+
     console.log(params);
 
     $http({
@@ -67,6 +75,7 @@ angular.module('hsgatherer.main', [])
     delete $scope.healthComparator;
     delete $scope.durability;
     delete $scope.durabilityComparator;
+    delete $scope.classes;
     $scope.update();
   };
 

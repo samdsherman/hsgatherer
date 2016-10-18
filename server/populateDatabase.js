@@ -23,6 +23,7 @@ fs.readFile(__dirname + '/hs.json', function(err, data) {
             return;
           }
           card.name = card.name.toLowerCase();
+          card.playerClass = card.playerClass || 'Neutral';
           HsCard.create(card);
         });
       });

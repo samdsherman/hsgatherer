@@ -60,6 +60,24 @@
       <option>Promo</option>
       <option>Reward</option>
     </select>
+    <br/>
+    Class:
+    <br/>
+    <input type='checkbox' ng-model='classes.Neutral' ng-change='update()'>Neutral
+    <input type='checkbox' ng-model='classes.Druid' ng-change='update()'>Druid
+    <br/>
+    <input type='checkbox' ng-model='classes.Hunter' ng-change='update()'>Hunter
+    <input type='checkbox' ng-model='classes.Mage' ng-change='update()'>Mage
+    <br/>
+    <input type='checkbox' ng-model='classes.Paladin' ng-change='update()'>Paladin
+    <input type='checkbox' ng-model='classes.Priest' ng-change='update()'>Priest
+    <br/>
+    <input type='checkbox' ng-model='classes.Rogue' ng-change='update()'>Rogue
+    <input type='checkbox' ng-model='classes.Shaman' ng-change='update()'>Shaman
+    <br/>
+    <input type='checkbox' ng-model='classes.Warlock' ng-change='update()'>Warlock
+    <input type='checkbox' ng-model='classes.Warrior' ng-change='update()'>Warrior
+    <br/>
   </div>
   <div ng-repeat="card in data | orderBy: 'cost'">   
     <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}}>
