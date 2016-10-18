@@ -10,10 +10,12 @@ exports.getCards = function(req, res) {
     var [key, value] = pair.split('=');
     query[key] = decodeURIComponent(value);
   });
-  if (query.name) {
-    query.name = query.name.toLowerCase();
-    if (query.partial) {
+  if (query.partial) {
+    if (query.name) {
       query.name = new RegExp(query.name);
+    }
+    if (query.text) {
+      query.text = new RegExp(query.text);
     }
   }
   if (query.cost) {
@@ -58,6 +60,10 @@ exports.getCards = function(req, res) {
   if (query.type) {
     var types = query.type.split(',');
     query.type = {$in: types};
+  }
+  if (query.rarity) {
+    var rarities = query.rarity.split(',');
+    query.rarity = {$in: rarities};
   }
   delete query.partial;
 

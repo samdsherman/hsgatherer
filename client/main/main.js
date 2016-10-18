@@ -4,18 +4,22 @@ angular.module('hsgatherer.main', [])
 
   $scope.update = function() {
     var params = '';
+
     if ($scope.partial) {
       params += '&partial=' + $scope.partial;
     }
+
     if ($scope.name) {
-      params += '&name=' + $scope.name;
+      params += '&name=' + $scope.name.toLowerCase();
     }
+
     if ($scope.types) {
       var selectedTypes = Object.keys($scope.types).filter(key => $scope.types[key]);
       if (selectedTypes.length > 0) {
         params += '&type=' + selectedTypes.join(',');
       }
     }
+
     if ($scope.attack === 0 || $scope.attack) {
       params += '&attack=';
       if ($scope.attackComparator && $scope.attackComparator !== '=') {
@@ -23,6 +27,7 @@ angular.module('hsgatherer.main', [])
       }
       params += $scope.attack;
     }
+
     if ($scope.health === 0 || $scope.health) {
       params += '&health=';
       if ($scope.healthComparator && $scope.healthComparator !== '=') {
@@ -30,6 +35,7 @@ angular.module('hsgatherer.main', [])
       }
       params += $scope.health;
     }
+
     if ($scope.durability === 0 || $scope.durability) {
       params += '&durability=';
       if ($scope.durabilityComparator && $scope.durabilityComparator !== '=') {
@@ -37,6 +43,7 @@ angular.module('hsgatherer.main', [])
       }
       params += $scope.durability;
     }
+
     if ($scope.cost === 0 || $scope.cost) {
       params += '&cost=';
       if ($scope.costComparator && $scope.costComparator !== '=') {
@@ -44,6 +51,7 @@ angular.module('hsgatherer.main', [])
       }
       params += $scope.cost;
     }
+
     if ($scope.sets) {
       var selectedSets = Object.keys($scope.sets).filter(key => $scope.sets[key]);
       if (selectedSets.length > 0) {
@@ -56,6 +64,17 @@ angular.module('hsgatherer.main', [])
       if (selectedClasses.length > 0) {
         params += '&playerClass=' + selectedClasses.join(',');
       }
+    }
+
+    if ($scope.rarities) {
+      var selectedRarities = Object.keys($scope.rarities).filter(key => $scope.rarities[key]);
+      if (selectedRarities.length > 0) {
+        params += '&rarity=' + selectedRarities.join(',');
+      }
+    }
+
+    if ($scope.text) {
+      params += '&text=' + $scope.text.toLowerCase();
     }
 
     console.log(params);
@@ -74,6 +93,7 @@ angular.module('hsgatherer.main', [])
   $scope.reset = function() {
     delete $scope.partial;
     delete $scope.name;
+    delete $scope.text;
     delete $scope.types;
     delete $scope.cost;
     delete $scope.costComparator;
@@ -85,6 +105,7 @@ angular.module('hsgatherer.main', [])
     delete $scope.durabilityComparator;
     delete $scope.classes;
     delete $scope.sets;
+    delete $scope.rarities;
     $scope.update();
   };
 

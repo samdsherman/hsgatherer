@@ -6,10 +6,12 @@
   <br/>
   Card name: <input type="text" ng-model="name" ng-change="update()">
   <div ng-show="advanced">
+    Text: <input type='text' ng-model='text' ng-change='update()'>
+    <br/>
     Card type:
-    <input type='checkbox' name='type' value='Minion' ng-model='types.Minion' ng-change='update()'>Minion
-    <input type='checkbox' name='type' value='Spell' ng-model='types.Spell' ng-change='update()'>Spell
-    <input type='checkbox' name='type' value='Weapon' ng-model='types.Weapon' ng-change='update()'>Weapon
+    <input type='checkbox' ng-model='types.Minion' ng-change='update()'>Minion
+    <input type='checkbox' ng-model='types.Spell' ng-change='update()'>Spell
+    <input type='checkbox' ng-model='types.Weapon' ng-change='update()'>Weapon
     <div ng-show='types.Minion || types.Weapon'><!-- Attack, Health, Durability -->
       Attack:
       <input type='number' ng-model='attack' ng-change='update()'>
@@ -37,6 +39,7 @@
         </select>
       </div>
     </div>
+    <br ng-show='!types.Minion && !types.Weapon' />
     Cost:
     <input type='number' ng-model='cost' ng-change='update()'>
     <select ng-model='costComparator' ng-change='update()'>
@@ -74,7 +77,6 @@
         </tr>
       </tbody>
     </table>
-    <br/>
     <table><!-- Class -->
       <thead>Class:</thead>
       <tbody>
@@ -100,6 +102,13 @@
         </tr>
       </tbody>
     </table>
+    Rarity:
+    <input type='checkbox' ng-model='rarities.Free' ng-change='update()'>Free
+    <input type='checkbox' ng-model='rarities.Common' ng-change='update()'>Common
+    <input type='checkbox' ng-model='rarities.Rare' ng-change='update()'>Rare
+    <input type='checkbox' ng-model='rarities.Epic' ng-change='update()'>Epic
+    <input type='checkbox' ng-model='rarities.Legendary' ng-change='update()'>Legendary
+
   </div>
   <div ng-repeat="card in data | orderBy: ['cost','name']">   
     <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}}>
