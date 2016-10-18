@@ -16,6 +16,9 @@ angular.module('hsgatherer.main', [])
     if ($scope.cost !== undefined) {
       params += '&cost=' + $scope.cost;
     }
+    if ($scope.set) {
+      params += '&cardSet=' + $scope.set;
+    }
     console.log(params);
 
     $http({
@@ -31,6 +34,7 @@ angular.module('hsgatherer.main', [])
     delete $scope.name;
     delete $scope.type;
     delete $scope.cost;
+    delete $scope.set;
     $scope.update();
   };
 

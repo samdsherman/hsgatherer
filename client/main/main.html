@@ -13,10 +13,25 @@
     <input type='radio' name='type' value='' ng-model='type' ng-change='update()'>Any<br/>
     Cost:
     <input type='number' ng-model='cost' ng-change='update()'>
-    <select ng-model='costComparator'>
+    <!-- <select ng-model='costComparator'>
       <option>=</option>
       <option>></option>
       <option><</option>
+    </select> -->
+    <br/>
+    Set:
+    <select ng-model='set' ng-change='update()'>
+      <option>Basic</option>
+      <option>Classic</option>
+      <option>Naxxramas</option>
+      <option>Goblins vs Gnomes</option>
+      <option>Blackrock Mountain</option>
+      <option>The Grand Tournament</option>
+      <option>The League of Explorers</option>
+      <option>Whispers of the Old Gods</option>
+      <option>Karazhan</option>
+      <option>Promo</option>
+      <option>Reward</option>
     </select>
   </div>
   <div ng-repeat="card in data | orderBy: 'cost'">   

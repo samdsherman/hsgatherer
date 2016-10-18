@@ -16,6 +16,7 @@ exports.getCards = function(req, res) {
     }
     delete query.partial;
   }
+  console.log(query);
   findCards(query)
   .then(function(cards) {
     res.json(cards);
