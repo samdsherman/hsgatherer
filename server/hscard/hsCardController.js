@@ -8,15 +8,15 @@ exports.getCards = function(req, res) {
   var query = {};
   params.forEach(function(pair) {
     var [key, value] = pair.split('=');
-    query[key] = decodeURIComponent(value).toLowerCase();
+    query[key] = decodeURIComponent(value);
   });
-  if (query.partial) {
-    if (query.name) {
+  if (query.name) {
+    query.name = query.name.toLowerCase();
+    if (query.partial) {
       query.name = new RegExp(query.name);
     }
-    delete query.partial;
   }
-  console.log(query);
+  delete query.partial;
   findCards(query)
   .then(function(cards) {
     res.json(cards);

@@ -23,8 +23,6 @@ fs.readFile(__dirname + '/hs.json', function(err, data) {
             return;
           }
           card.name = card.name.toLowerCase();
-          card.type = card.type.toLowerCase();
-          card.cardSet = card.cardSet.toLowerCase();
           HsCard.create(card);
         });
       });
