@@ -79,7 +79,7 @@
     <input type='checkbox' ng-model='classes.Warrior' ng-change='update()'>Warrior
     <br/>
   </div>
-  <div ng-repeat="card in data | orderBy: 'cost'">   
+  <div ng-repeat="card in data | orderBy: ['cost','name']">   
     <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}}>
   </div>
 </div>
