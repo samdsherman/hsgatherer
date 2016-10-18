@@ -29,6 +29,7 @@ exports.getCards = function(req, res) {
     } else if (query.health[0] === '>') {
       query.health = {$gt: +(query.health.slice(1))};
     }
+    query.health = {$in: [query.health, null]};
   }
   if (query.attack) {
     if (query.attack[0] === '<') {
@@ -36,6 +37,7 @@ exports.getCards = function(req, res) {
     } else if (query.attack[0] === '>') {
       query.attack = {$gt: +(query.attack.slice(1))};
     }
+    query.attack = {$in: [query.attack, null]};
   }
   if (query.durability) {
     if (query.durability[0] === '<') {
@@ -43,6 +45,7 @@ exports.getCards = function(req, res) {
     } else if (query.durability[0] === '>') {
       query.durability = {$gt: +(query.durability.slice(1))};
     }
+    query.durability = {$in: [query.durability, null]};
   }
   if (query.playerClass) {
     var classes = query.playerClass.split(',');
