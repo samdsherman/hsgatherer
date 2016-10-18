@@ -10,6 +10,7 @@ var HsCardSchema = new mongoose.Schema({
   cost: Number,
   attack: Number,
   health: Number,
+  durability: Number,
   text: String,
   flavor: String,
   artist: String,

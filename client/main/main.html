@@ -11,6 +11,35 @@
     <input type='radio' name='type' value='Spell' ng-model='type' ng-change='update()'>Spell
     <input type='radio' name='type' value='Weapon' ng-model='type' ng-change='update()'>Weapon
     <input type='radio' name='type' value='' ng-model='type' ng-change='update()'>Any<br/>
+    <div ng-show='type==="Minion" || type==="Weapon"'>
+      Attack:
+      <input type='number' ng-model='attack' ng-change='update()'>
+      <select ng-model='attackComparator' ng-change='update()'>
+        <option>=</option>
+        <option>></option>
+        <option><</option>
+      </select>
+      <br/>
+      <div ng-show='type==="Minion"'>
+        Health:
+        <input type='number' ng-model='health' ng-change='update()'>
+        <select ng-model='healthComparator' ng-change='update()'>
+          <option>=</option>
+          <option>></option>
+          <option><</option>
+        </select>
+      </div>
+      <div ng-show='type==="Weapon"'>
+        Durability:
+        <input type='number' ng-model='durability' ng-change='update()'>
+        <select ng-model='durabilityComparator' ng-change='update()'>
+          <option>=</option>
+          <option>></option>
+          <option><</option>
+        </select>
+      </div>
+      <br/>
+    </div>
     Cost:
     <input type='number' ng-model='cost' ng-change='update()'>
     <select ng-model='costComparator' ng-change='update()'>

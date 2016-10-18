@@ -23,6 +23,27 @@ exports.getCards = function(req, res) {
       query.cost = {$gt: +(query.cost.slice(1))};
     }
   }
+  if (query.health) {
+    if (query.health[0] === '<') {
+      query.health = {$lt: +(query.health.slice(1))};
+    } else if (query.health[0] === '>') {
+      query.health = {$gt: +(query.health.slice(1))};
+    }
+  }
+  if (query.attack) {
+    if (query.attack[0] === '<') {
+      query.attack = {$lt: +(query.attack.slice(1))};
+    } else if (query.attack[0] === '>') {
+      query.attack = {$gt: +(query.attack.slice(1))};
+    }
+  }
+  if (query.durability) {
+    if (query.durability[0] === '<') {
+      query.durability = {$lt: +(query.durability.slice(1))};
+    } else if (query.durability[0] === '>') {
+      query.durability = {$gt: +(query.durability.slice(1))};
+    }
+  }
   delete query.partial;
   findCards(query)
   .then(function(cards) {
