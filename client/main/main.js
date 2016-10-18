@@ -14,7 +14,11 @@ angular.module('hsgatherer.main', [])
       params += '&type=' + $scope.type;
     }
     if ($scope.cost !== undefined) {
-      params += '&cost=' + $scope.cost;
+      params += '&cost=';
+      if ($scope.costComparator && $scope.costComparator !== '=') {
+        params += $scope.costComparator;
+      }
+      params += $scope.cost;
     }
     if ($scope.set) {
       params += '&cardSet=' + $scope.set;

@@ -16,6 +16,13 @@ exports.getCards = function(req, res) {
       query.name = new RegExp(query.name);
     }
   }
+  if (query.cost) {
+    if (query.cost[0] === '<') {
+      query.cost = {$lt: +(query.cost.slice(1))};
+    } else if (query.cost[0] === '>') {
+      query.cost = {$gt: +(query.cost.slice(1))};
+    }
+  }
   delete query.partial;
   findCards(query)
   .then(function(cards) {
