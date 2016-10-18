@@ -52,7 +52,13 @@ exports.getCards = function(req, res) {
     var sets = query.cardSet.split(',');
     query.cardSet = {$in: sets};
   }
+  if (query.type) {
+    var types = query.type.split(',');
+    query.type = {$in: types};
+  }
   delete query.partial;
+
+  console.log(query);
   findCards(query)
   .then(function(cards) {
     res.json(cards);

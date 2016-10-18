@@ -7,11 +7,10 @@
   Card name: <input type="text" ng-model="name" ng-change="update()">
   <div ng-show="advanced">
     Card type:
-    <input type='radio' name='type' value='Minion' ng-model='type' ng-change='update()'>Minion
-    <input type='radio' name='type' value='Spell' ng-model='type' ng-change='update()'>Spell
-    <input type='radio' name='type' value='Weapon' ng-model='type' ng-change='update()'>Weapon
-    <input type='radio' name='type' value='' ng-model='type' ng-change='update()'>Any<br/>
-    <div ng-show='type==="Minion" || type==="Weapon"'>
+    <input type='checkbox' name='type' value='Minion' ng-model='types.Minion' ng-change='update()'>Minion
+    <input type='checkbox' name='type' value='Spell' ng-model='types.Spell' ng-change='update()'>Spell
+    <input type='checkbox' name='type' value='Weapon' ng-model='types.Weapon' ng-change='update()'>Weapon
+    <div ng-show='types.Minion || types.Weapon'><!-- Attack, Health, Durability -->
       Attack:
       <input type='number' ng-model='attack' ng-change='update()'>
       <select ng-model='attackComparator' ng-change='update()'>
@@ -19,7 +18,7 @@
         <option>></option>
         <option><</option>
       </select>
-      <div ng-show='type==="Minion"'>
+      <div ng-show='types.Minion'>
         Health:
         <input type='number' ng-model='health' ng-change='update()'>
         <select ng-model='healthComparator' ng-change='update()'>
@@ -28,7 +27,7 @@
           <option><</option>
         </select>
       </div>
-      <div ng-show='type==="Weapon"'>
+      <div ng-show='types.Weapon'>
         Durability:
         <input type='number' ng-model='durability' ng-change='update()'>
         <select ng-model='durabilityComparator' ng-change='update()'>
@@ -46,35 +45,37 @@
       <option><</option>
     </select>
     <br/>
-    <table>
+    <table><!-- Set -->
       <thead>Set: <input type='checkbox' ng-model='standard' ng-change='standardSets(standard)'>Standard
       </thead>
       <tbody>
         <tr>
-          <td><input type='checkbox' ng-model='sets.Basic' ng-change='update()'>Basic
-          <td><input type='checkbox' ng-model='sets.Classic' ng-change='update()'>Classic
+          <td><input type='checkbox' ng-model='sets.Basic' ng-change='update()'>Basic</td>
+          <td><input type='checkbox' ng-model='sets.Classic' ng-change='update()'>Classic</td>
         </tr>
         <tr>
-          <td><input type='checkbox' ng-model='sets.Naxxramas' ng-change='update()'>Naxxramas
-          <td><input type='checkbox' ng-model='sets["Goblins vs Gnomes"]' ng-change='update()'>Goblins vs Gnomes
+          <td><input type='checkbox' ng-model='sets.Naxxramas' ng-change='update()'>Naxxramas</td>
+          <td><input type='checkbox' ng-model='sets["Goblins vs Gnomes"]' ng-change='update()'>Goblins vs Gnomes</td>
         </tr>
         <tr>
-          <td><input type='checkbox' ng-model='sets["Blackrock Mountain"]' ng-change='update()'>Blackrock Mountain
-          <td><input type='checkbox' ng-model='sets["The Grand Tournament"]' ng-change='update()'>The Grand Tournament
+          <td><input type='checkbox' ng-model='sets["Blackrock Mountain"]' ng-change='update()'>Blackrock Mountain</td>
+          <td><input type='checkbox' ng-model='sets["The Grand Tournament"]' ng-change='update()'>The Grand Tournament</td>
         </tr>
         <tr>
-          <td><input type='checkbox' ng-model='sets["The League of Explorers"]' ng-change='update()'>The League of Explorers
-          <td><input type='checkbox' ng-model='sets["Whispers of the Old Gods"]' ng-change='update()'>Whispers of the Old Gods
+          <td><input type='checkbox' ng-model='sets["The League of Explorers"]' ng-change='update()'>The League of Explorers</td>
+          <td><input type='checkbox' ng-model='sets["Whispers of the Old Gods"]' ng-change='update()'>Whispers of the Old Gods</td>
         </tr>
         <tr>
-          <td><input type='checkbox' ng-model='sets.Karazhan' ng-change='update()'>Karazhan
+          <td><input type='checkbox' ng-model='sets.Karazhan' ng-change='update()'>Karazhan</td>
+        </tr>
         <tr>
-          <td><input type='checkbox' ng-model='sets.Promo' ng-change='update()'>Promo
-          <td><input type='checkbox' ng-model='sets.Reward' ng-change='update()'>Reward
+          <td><input type='checkbox' ng-model='sets.Promo' ng-change='update()'>Promo</td>
+          <td><input type='checkbox' ng-model='sets.Reward' ng-change='update()'>Reward</td>
         </tr>
       </tbody>
+    </table>
     <br/>
-    <table>
+    <table><!-- Class -->
       <thead>Class:</thead>
       <tbody>
         <tr>
