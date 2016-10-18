@@ -1,14 +1,25 @@
 <div id='container' ng-controller="MainController">
-  Card name: <input type="text" ng-model="name" ng-change="update()">
   <input type='checkbox' ng-model='partial' ng-change='update()'>Allow partial matches
   <button ng-click="advanced=!advanced">{{advanced ? 'Hide' : 'Show'}} advanced</button>
-  <div ng-show="advanced" ng-click="update()">
-    <input type='radio' name='type' value='Minion' ng-model='type'>Minion
-    <input type='radio' name='type' value='Spell' ng-model='type'>Spell
-    <input type='radio' name='type' value='Weapon' ng-model='type'>Weapon
-    <input type='radio' name='type' value='' ng-model='type'>Any<br/>
+  <button ng-click='reset()'>Reset all filters</button>
+  <input type='checkbox' ng-model='gold' ng-change='update()'>Show golden card images
+  <br/>
+  Card name: <input type="text" ng-model="name" ng-change="update()">
+  <div ng-show="advanced">
+    Card type:
+    <input type='radio' name='type' value='Minion' ng-model='type' ng-change='update()'>Minion
+    <input type='radio' name='type' value='Spell' ng-model='type' ng-change='update()'>Spell
+    <input type='radio' name='type' value='Weapon' ng-model='type' ng-change='update()'>Weapon
+    <input type='radio' name='type' value='' ng-model='type' ng-change='update()'>Any<br/>
+    Cost:
+    <input type='number' ng-model='cost' ng-change='update()'>
+    <select ng-model='costComparator'>
+      <option>=</option>
+      <option>></option>
+      <option><</option>
+    </select>
   </div>
   <div ng-repeat="card in data | orderBy: 'cost'">   
-    <img src={{card.img}} alt={{card.name}} />
+    <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}}>
   </div>
 </div>
