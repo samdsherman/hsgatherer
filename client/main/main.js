@@ -41,8 +41,11 @@ angular.module('hsgatherer.main', [])
       }
       params += $scope.cost;
     }
-    if ($scope.set) {
-      params += '&cardSet=' + $scope.set;
+    if ($scope.sets) {
+      var selectedSets = Object.keys($scope.sets).filter(key => $scope.sets[key]);
+      if (selectedSets.length > 0) {
+        params += '&cardSet=' + selectedSets.join(',');
+      }
     }
 
     if ($scope.classes) {
@@ -66,7 +69,6 @@ angular.module('hsgatherer.main', [])
     delete $scope.partial;
     delete $scope.name;
     delete $scope.type;
-    delete $scope.set;
     delete $scope.cost;
     delete $scope.costComparator;
     delete $scope.attack;
@@ -76,6 +78,19 @@ angular.module('hsgatherer.main', [])
     delete $scope.durability;
     delete $scope.durabilityComparator;
     delete $scope.classes;
+    delete $scope.sets;
+    $scope.update();
+  };
+
+  $scope.standardSets = function(show) {
+    $scope.sets = $scope.sets || {};
+    $scope.sets['Basic'] = 
+    $scope.sets['Classic'] =
+    $scope.sets['Blackrock Mountain'] =
+    $scope.sets['The Grand Tournament'] =
+    $scope.sets['The League of Explorers'] =
+    $scope.sets['Whispers of the Old Gods'] =
+    $scope.sets['Karazhan'] = show;
     $scope.update();
   };
 

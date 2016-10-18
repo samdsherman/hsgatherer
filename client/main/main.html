@@ -46,20 +46,33 @@
       <option><</option>
     </select>
     <br/>
-    Set:
-    <select ng-model='set' ng-change='update()'>
-      <option>Basic</option>
-      <option>Classic</option>
-      <option>Naxxramas</option>
-      <option>Goblins vs Gnomes</option>
-      <option>Blackrock Mountain</option>
-      <option>The Grand Tournament</option>
-      <option>The League of Explorers</option>
-      <option>Whispers of the Old Gods</option>
-      <option>Karazhan</option>
-      <option>Promo</option>
-      <option>Reward</option>
-    </select>
+    <table>
+      <thead>Set: <input type='checkbox' ng-model='standard' ng-change='standardSets(standard)'>Standard
+      </thead>
+      <tbody>
+        <tr>
+          <td><input type='checkbox' ng-model='sets.Basic' ng-change='update()'>Basic
+          <td><input type='checkbox' ng-model='sets.Classic' ng-change='update()'>Classic
+        </tr>
+        <tr>
+          <td><input type='checkbox' ng-model='sets.Naxxramas' ng-change='update()'>Naxxramas
+          <td><input type='checkbox' ng-model='sets["Goblins vs Gnomes"]' ng-change='update()'>Goblins vs Gnomes
+        </tr>
+        <tr>
+          <td><input type='checkbox' ng-model='sets["Blackrock Mountain"]' ng-change='update()'>Blackrock Mountain
+          <td><input type='checkbox' ng-model='sets["The Grand Tournament"]' ng-change='update()'>The Grand Tournament
+        </tr>
+        <tr>
+          <td><input type='checkbox' ng-model='sets["The League of Explorers"]' ng-change='update()'>The League of Explorers
+          <td><input type='checkbox' ng-model='sets["Whispers of the Old Gods"]' ng-change='update()'>Whispers of the Old Gods
+        </tr>
+        <tr>
+          <td><input type='checkbox' ng-model='sets.Karazhan' ng-change='update()'>Karazhan
+        <tr>
+          <td><input type='checkbox' ng-model='sets.Promo' ng-change='update()'>Promo
+          <td><input type='checkbox' ng-model='sets.Reward' ng-change='update()'>Reward
+        </tr>
+      </tbody>
     <br/>
     <table>
       <thead>Class:</thead>
