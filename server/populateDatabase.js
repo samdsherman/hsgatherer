@@ -22,8 +22,6 @@ fs.readFile(__dirname + '/hs.json', function(err, data) {
           if (card.type === 'Hero') {
             return;
           }
-          card.name = card.name.toLowerCase();
-          card.playerClass = card.playerClass || 'Neutral';
           HsCard.create(card);
         });
       });

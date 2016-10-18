@@ -17,7 +17,10 @@ var HsCardSchema = new mongoose.Schema({
   collectible: Boolean,
   elite: Boolean,
   race: String,
-  playerClass: String,
+  playerClass: {
+    type: String,
+    default: 'Neutral'
+  },
   howToGet: String,
   howToGetGold: String,
   img: String,

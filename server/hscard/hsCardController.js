@@ -12,10 +12,13 @@ exports.getCards = function(req, res) {
   });
   if (query.partial) {
     if (query.name) {
-      query.name = new RegExp(query.name);
+      query.name = new RegExp(query.name, 'i');
     }
     if (query.text) {
-      query.text = new RegExp(query.text);
+      query.text = new RegExp(query.text, 'i');
+    }
+    if (query.race) {
+      query.race = new RegExp(query.race, 'i');
     }
   }
   if (query.cost) {

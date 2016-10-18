@@ -8,6 +8,8 @@
   <div ng-show="advanced">
     Text: <input type='text' ng-model='text' ng-change='update()'>
     <br/>
+    Race: <input type='text' ng-model='race' ng-change='update()'>
+    <br/>
     Card type:
     <input type='checkbox' ng-model='types.Minion' ng-change='update()'>Minion
     <input type='checkbox' ng-model='types.Spell' ng-change='update()'>Spell
@@ -108,9 +110,9 @@
     <input type='checkbox' ng-model='rarities.Rare' ng-change='update()'>Rare
     <input type='checkbox' ng-model='rarities.Epic' ng-change='update()'>Epic
     <input type='checkbox' ng-model='rarities.Legendary' ng-change='update()'>Legendary
-
+    <br/>
   </div>
   <div ng-repeat="card in data | orderBy: ['cost','name']">   
-    <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}}>
+    <img ng-src='{{gold ? card.imgGold : card.img}}' alt={{card.name}} title={{card.name}}>
   </div>
 </div>

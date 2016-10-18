@@ -10,7 +10,7 @@ angular.module('hsgatherer.main', [])
     }
 
     if ($scope.name) {
-      params += '&name=' + $scope.name.toLowerCase();
+      params += '&name=' + $scope.name;
     }
 
     if ($scope.types) {
@@ -74,7 +74,11 @@ angular.module('hsgatherer.main', [])
     }
 
     if ($scope.text) {
-      params += '&text=' + $scope.text.toLowerCase();
+      params += '&text=' + $scope.text;
+    }
+
+    if ($scope.race) {
+      params += '&race=' + $scope.race;
     }
 
     console.log(params);
@@ -106,6 +110,8 @@ angular.module('hsgatherer.main', [])
     delete $scope.classes;
     delete $scope.sets;
     delete $scope.rarities;
+    delete $scope.standard;
+    delete $scope.race;
     $scope.update();
   };
 
