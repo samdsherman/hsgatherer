@@ -19,7 +19,11 @@ fs.readFile(__dirname + '/hs.json', function(err, data) {
       }
       Object.keys(parsedJson).forEach(function(set) {
         parsedJson[set].forEach(function(card) {
+          if (card.type === 'Hero') {
+            return;
+          }
           card.name = card.name.toLowerCase();
+          card.type = card.type.toLowerCase();
           HsCard.create(card);
         });
       });

@@ -1,6 +1,14 @@
 <div id='container' ng-controller="MainController">
-  Card name: <input type="text" ng-model="search" ng-change="update()">
-  <div ng-repeat="card in data">
-    <img src={{card.img}} />
+  Card name: <input type="text" ng-model="name" ng-change="update()">
+  <input type='checkbox' ng-model='partial' ng-change='update()'>Allow partial matches
+  <button ng-click="advanced=!advanced">{{advanced ? 'Hide' : 'Show'}} advanced</button>
+  <div ng-show="advanced" ng-click="update()">
+    <input type='radio' name='type' value='Minion' ng-model='type'>Minion
+    <input type='radio' name='type' value='Spell' ng-model='type'>Spell
+    <input type='radio' name='type' value='Weapon' ng-model='type'>Weapon
+    <input type='radio' name='type' value='' ng-model='type'>Any<br/>
+  </div>
+  <div ng-repeat="card in data | orderBy: 'cost'">   
+    <img src={{card.img}} alt={{card.name}} />
   </div>
 </div>
